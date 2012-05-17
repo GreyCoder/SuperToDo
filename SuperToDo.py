@@ -1,4 +1,24 @@
-
+######
+#  SUPER TO DO!!!!!
+#   by erik redding <erik@erikerikerik.com>
+#  
+#	A web-based ToDo List for personal use.  Possibly extend to CLI
+#
+# Goals:  
+#	- create simple data structure to represent a password-protected
+#       todo list that is easily pickle-able
+#	- extend to simple web interface that prompts for list password 
+#		- lists out any existing items with options:
+#			[d]one
+#			[e]dit item
+#			[r]emove item
+#		- have a textbox at the top of the page that lets you enter a new item
+#			and pressing return adds the items. 
+#   - Maybe?? create command-line interface for adding/removing items 
+#		- TUI that lists ToDo's available
+#		- select list, prompt for password
+#		- if correct passwd, list out items and then readline for d,e,r,a
+######
 import os
 
 
