@@ -26,30 +26,35 @@ class ToDo(object):
 	"""base ToDo class - simple datastructure for defining a ToDo Item"""
 	def __init__(self, description, location):
 		super(ToDo, self).__init__()
-		self.description = description
-		self.isThisDone = False
-		self.location = location or None
+		self._description = description
+		self._isThisDone = False
+		self._location = location or None
 	
 	@property
-	def description(self): return self.description
+	def description(): 
+		def fget(self):
+			return self._description
+		def fset(self, newdesc):
+			self._description = newdesc			
 
 	@property
-	def location(self): return self.location
+	def location(): 
+		def fget(self):
+			return self._location
+		def fset(self, newlocation):
+			self._location = newlocation
 
 	@property
-	def isThisDone(self): return self.isThisDone
+	def isThisDone(): 
+		def fget(self):
+			return self._isThisDone
 
 	def done(self):
-		self.isThisDone = True
+		self._isThisDone = True
 
 	def notDone(self):
-		self.isThisDone = False
+		self._isThisDone = False
 
-	def changeDescription(self, newdesc):
-		self.description = newdesc
-
-	def setLocation(locationString):
-		self.location = str(locationString)
 	
 	def __str__(self):
 		if self.location is not None 
@@ -71,13 +76,6 @@ class ToDoList(object):
 		self.password = password
 		self.todoList = {}
 		
-	def newList():
-
-
-
-
-
-class ToDoList():
 	# item
 
 	#addToDo
@@ -90,4 +88,10 @@ class ToDoList():
 
 	#print
 
+	def authenticate(self):
+		""" 
+		provides authentication for the class.  
+		It should require that password is set to the correct value.
+		"""
+		pass
 
