@@ -122,8 +122,13 @@ class ToDoList(list):
 		self[index].done()
 
 
-	def done(self):
-		return len()
+	def Complete(self):
+		return [todo for todo in self if todo.isThisDone()]
+
+	def Incomplete(self):
+		return [todo for todo in self if not todo.isThisDone()]
+
+
 	#print
 	def __str__(self):
 		return '\n'.join(str(todo) for todo in self)
