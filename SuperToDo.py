@@ -24,11 +24,11 @@ import os
 
 class ToDo(object):
 	"""base ToDo class - simple datastructure for defining a ToDo Item"""
-	def __init__(self, description, location):
+	def __init__(self, description, location = None):
 		super(ToDo, self).__init__()
 		self._description = description
 		self._isThisDone = False
-		self._location = location or None
+		self._location = location
 	
 	@property
 	def description(): 
@@ -57,34 +57,40 @@ class ToDo(object):
 
 	
 	def __str__(self):
-		if self.location is not None 
-			if self.isThisDone:
-				return "ToDo Object: '%s' at %s is complete" % (self.description, self.location)
+		if self._location is not None:
+			if self._isThisDone:
+				return "ToDo Object: '%s' at %s is complete" % (self._description, self._location)
 			else:
-				return "ToDo Object: '%s' at %s is not complete" % (self.description, self.location)
-		if self.location is None
-			if self.isThisDone:
-				return "ToDo Object: '%s' is complete" % (self.description, self.location)
+				return "ToDo Object: '%s' at %s is not complete" % (self._description, self._location)
+		if self._location is None:
+			if self._isThisDone:
+				return "ToDo Object: '%s' is complete" % (self._description)
 			else:
-				return "ToDo Object: '%s' is not complete" % (self.description, self.location)
+				return "ToDo Object: '%s' is not complete" % (self._description)
 
 class ToDoList(object):
-	"""docstring for ToDoList"""
+	"""
+	This is a ToDoList object - an interface for a collection of ToDo classes
+
+	The interface provides methods to add, remove, and mark ToDo items complete.
+	"""
+
 	def __init__(self, listName, password):
-		# super(ToDoList, self).__init__()
-		self.listName = listName
-		self.password = password
-		self.todoList = {}
-		
-	# item
+		super(ToDoList, self).__init__()
+		self._listName = listName
+		self._password = password
+		self._todoList = []
+		self.index = len(_todoList)
 
 	#addToDo
-
-	#deleteToDo
-
+	def addToDo(self, desc):
+		self._todoList = ToDo(desc)
+	#removeToDo
+	def removeToDo(self, toDo):
+		self._todoList.remove(toDo)
 	#markDone
-
-	#reorder
+	def markDone(self,toDo):	
+		self._todoList[toDo].done()
 
 	#print
 
