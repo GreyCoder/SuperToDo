@@ -111,29 +111,18 @@ class ToDoList(list):
 		super(ToDoList, self).append(input)
 
 
-	# def removeToDo(self, toDo):
-	# 	self.remove(toDo)
-	#markDone
-	def markDone(self,index):	
-		""" markDone based on index of array.  
-		"""
-		# TODO: if index isn't a number, throw an exception
-
-		self[index].done()
-
-
 	def Complete(self):
-		return [todo for todo in self if todo.isThisDone()]
+		return [todo for todo in self if todo.isThisDone]
+
 
 	def Incomplete(self):
-		return [todo for todo in self if not todo.isThisDone()]
+		return [todo for todo in self if not todo.isThisDone]
 
 
 	#print
 	def __str__(self):
 		return '\n'.join(str(todo) for todo in self)
 		
-
 
 	def authenticate(self):
 		""" 
