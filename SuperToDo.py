@@ -88,7 +88,7 @@ class ToDo(object):
 
 
 
-class ToDoList(object):
+class ToDoList(list):
 	"""
 	This is a ToDoList object - an interface for a collection of ToDo classes
 
@@ -103,29 +103,20 @@ class ToDoList(object):
 		self._todoList = []
 		self.index = len(self._todoList)
 
-	def _selectToDo(self, input):
-		"""
-		Select which ToDo in the List was requested by 'input' - detects 
-		if it was a string or an actual ToDo object and then returns
-		the array index
-		"""
-		# if isinstance(toDo, basestring):
-		# 	if self._todoList(ToDo)
+	#append based on string or whatever
+	def append(self, input):
+		if isinstance(input, str) or isinstance(input, unicode):
+			self._todoList.append(ToDo(input))
+		if not isinstance(input, ToDo):
+			raise TypeError("Only ToDo, str, or unicode objects allowed")
+		super(list, self).append()
 
-		# if isinstance(toDo, ToDo):
-		# 	self._todoList.remove(toDo)
-		pass
 
-	#addToDo
-	def addToDo(self, desc):
-		self._todoList.append(ToDo(desc))
 	def removeToDo(self, toDo):
-		pass
-
+		self._todoList.remove(ToDo)
 	#markDone
 	def markDone(self,toDo):	
 		self._todoList[toDo].done()
-
 	#print
 	def __str__(self):
 		return '\n'.join(str(todo) for todo in self._todoList)
