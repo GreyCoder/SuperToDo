@@ -117,8 +117,7 @@ class ToDoList(list):
 	def markDone(self,index):	
 		""" markDone based on index of array.  
 		"""
-		# if index isn't a number, throw an exception
-		if index
+		# TODO: if index isn't a number, throw an exception
 
 		self[index].done()
 
