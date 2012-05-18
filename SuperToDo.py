@@ -111,13 +111,12 @@ class ToDoList(list):
 		super(ToDoList, self).append(input)
 
 
-	def Complete(self):
+	def Done(self):
 		return [todo for todo in self if todo.isThisDone]
 
 
-	def Incomplete(self):
+	def NotDone(self):
 		return [todo for todo in self if not todo.isThisDone]
-
 
 	#print
 	def __str__(self):
