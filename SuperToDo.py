@@ -55,7 +55,7 @@ class ToDo(object):
 		del self._location
 
 	@property
-	def isThisDone(): 
+	def isThisDone(self): 
 		return self._isThisDone if hasattr(self, '_isThisDone') else False
 
 	def done(self):
@@ -90,36 +90,44 @@ class ToDo(object):
 
 class ToDoList(list):
 	"""
-	This is a ToDoList object - an interface for a collection of ToDo classes
+	This is a ToDoList list - it collects ToDo objects. It inherits list.
 
-	The interface provides methods to add, remove, mark ToDo items complete, 
-		save ToDoLists 
+	The interface provides all list methods and additionally:
+	 - mark ToDo item(s) complete
+	 - 
 	"""
 
 	def __init__(self, listName, password):
 		super(ToDoList, self).__init__()
 		self._listName = listName
 		self._password = password
-		self._todoList = []
-		self.index = len(self._todoList)
 
 	#append based on string or whatever
 	def append(self, input):
 		if isinstance(input, str) or isinstance(input, unicode):
-			self._todoList.append(ToDo(input))
+			input = (ToDo(input))
 		if not isinstance(input, ToDo):
 			raise TypeError("Only ToDo, str, or unicode objects allowed")
-		super(list, self).append()
+		super(ToDoList, self).append(input)
 
 
-	def removeToDo(self, toDo):
-		self._todoList.remove(ToDo)
+	# def removeToDo(self, toDo):
+	# 	self.remove(toDo)
 	#markDone
-	def markDone(self,toDo):	
-		self._todoList[toDo].done()
+	def markDone(self,index):	
+		""" markDone based on index of array.  
+		"""
+		# if index isn't a number, throw an exception
+		if index
+
+		self[index].done()
+
+
+	def done(self):
+		return len()
 	#print
 	def __str__(self):
-		return '\n'.join(str(todo) for todo in self._todoList)
+		return '\n'.join(str(todo) for todo in self)
 		
 
 
