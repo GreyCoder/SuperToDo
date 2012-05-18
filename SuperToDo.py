@@ -76,12 +76,24 @@ class ToDo(object):
 			else:
 				return "ToDo Object: '%s' is not complete" % (self._description)
 
+	def __eq__(self, input):
+		if isinstance(input, ToDo):
+			return input._description == self._description
+		if isinstance(input, str):
+			return input == self._description
+		if isinstance(input, unicode):
+			return input == self._description
+		return False
+
+
+
 
 class ToDoList(object):
 	"""
 	This is a ToDoList object - an interface for a collection of ToDo classes
 
-	The interface provides methods to add, remove, and mark ToDo items complete.
+	The interface provides methods to add, remove, mark ToDo items complete, 
+		save ToDoLists 
 	"""
 
 	def __init__(self, listName, password):
@@ -89,19 +101,36 @@ class ToDoList(object):
 		self._listName = listName
 		self._password = password
 		self._todoList = []
-		self.index = len(_todoList)
+		self.index = len(self._todoList)
+
+	def _selectToDo(self, input):
+		"""
+		Select which ToDo in the List was requested by 'input' - detects 
+		if it was a string or an actual ToDo object and then returns
+		the array index
+		"""
+		# if isinstance(toDo, basestring):
+		# 	if self._todoList(ToDo)
+
+		# if isinstance(toDo, ToDo):
+		# 	self._todoList.remove(toDo)
+		pass
 
 	#addToDo
 	def addToDo(self, desc):
-		self._todoList = ToDo(desc)
-	#removeToDo
+		self._todoList.append(ToDo(desc))
 	def removeToDo(self, toDo):
-		self._todoList.remove(toDo)
+		pass
+
 	#markDone
 	def markDone(self,toDo):	
 		self._todoList[toDo].done()
 
 	#print
+	def __str__(self):
+		return '\n'.join(str(todo) for todo in self._todoList)
+		
+
 
 	def authenticate(self):
 		""" 
