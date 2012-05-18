@@ -31,30 +31,38 @@ class ToDo(object):
 		self._location = location
 	
 	@property
-	def description(): 
-		def fget(self):
-			return self._description
-		def fset(self, newdesc):
-			self._description = newdesc			
+	def description(self): 
+		return self._description if hasattr(self, '_description') else None
+
+	@description.setter
+	def description(self, d):
+		self._description = d
+
+	@description.deleter
+	def description(self):
+		del self._description
 
 	@property
-	def location(): 
-		def fget(self):
-			return self._location
-		def fset(self, newlocation):
-			self._location = newlocation
+	def location(self): 
+		return self._location if hasattr(self, '_location') else None
+
+	@location.setter
+	def location(self, s):
+		self._location = s
+
+	@location.deleter
+	def location(self):
+		del self._location
 
 	@property
 	def isThisDone(): 
-		def fget(self):
-			return self._isThisDone
+		return self._isThisDone if hasattr(self, '_isThisDone') else False
 
 	def done(self):
 		self._isThisDone = True
 
 	def notDone(self):
 		self._isThisDone = False
-
 	
 	def __str__(self):
 		if self._location is not None:
@@ -67,6 +75,7 @@ class ToDo(object):
 				return "ToDo Object: '%s' is complete" % (self._description)
 			else:
 				return "ToDo Object: '%s' is not complete" % (self._description)
+
 
 class ToDoList(object):
 	"""
